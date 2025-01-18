@@ -18,6 +18,10 @@ export const routes: Routes = [
   path: 'allCountries',
   loadComponent: () => import('./allCountries/allCountries.page').then( m => m.MoviesPage)
 },
+  {
+    path: 'settings',
+    loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
+  },
  
 
 ];

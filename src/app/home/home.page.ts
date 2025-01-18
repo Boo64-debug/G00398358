@@ -30,4 +30,9 @@ export class HomePage {
   openCountries() {
     this.router.navigate(['/movies'], { queryParams: { keyword: this.keyword } });
   }
+
+   // Navigate to settings page
+   settings() {
+    this.router.navigate(['/settings'], { queryParams: { keyword: this.keyword } });
+  }
 }
