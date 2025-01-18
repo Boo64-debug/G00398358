@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ keyword ? keyword : 'Countries Page' }} </ion-title>
+    
+  </ion-toolbar>
+   
+
+</ion-header>
+
+<ion-content>
+  <!-- Display Search Results -->
+  <ion-list *ngIf="filteredCountries.length > 0">
+    <ion-item *ngFor="let country of filteredCountries">
+      <!-- Display Full Flag Image -->
+      <img
+        [src]="country.flags?.png || country.flags?.svg"
+        [alt]="country.name.common"
+        style="width: 10%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
+      />
+
+      <!-- Display Country Name -->
+      <ion-label>
+        <h2 style="text-align: center;">{{ country.name.common }}</h2>
+      </ion-label>
+
+      <!-- Buttons for News and Weather -->
+      <div style="display: flex; justify-content: space-evenly; margin-top: 16px;">
+        <ion-button color="primary" expand="block">News</ion-button>
+        <ion-button color="secondary" expand="block">Weather</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <!-- Message if no results -->
+  <div *ngIf="filteredCountries.length === 0" style="text-align: center; padding: 16px;">
+    <p>No countries found for "{{ keyword }}".</p>
+  </div>
+</ion-content>

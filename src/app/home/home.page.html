@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">G00398358</ion-title>
+    <ion-button slot="end" routerLink="/settings" color="tertiary">
+      <ion-icon slot="icon-only" ios="logo-apple" md="settings-sharp"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <ion-input
+    label="Enter Country Keyword"
+    placeholder="Country name"
+    [(ngModel)]="keyword"
+  ></ion-input>
+  <ion-button color="tertiary" expand="block" (click)="openCountries()">Search</ion-button>
+</ion-content>
