@@ -10,10 +10,18 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonLabel, IonRadio, IonIte
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonLabel, IonRadio, IonItem, IonList, IonRadioGroup]
 })
 export class SettingsPage implements OnInit {
-
-  constructor() { }
+  selectedUnit: string = 'metric'; // Default to "Metric"
 
   ngOnInit() {
+    // Load the previously saved unit when the page is opened
+    const savedUnit = localStorage.getItem('selectedUnit');
+    if (savedUnit) {
+      this.selectedUnit = savedUnit;
+    }
   }
 
+  saveUnit() {
+    // Save the selected unit to localStorage
+    localStorage.setItem('selectedUnit', this.selectedUnit);
+  }
 }

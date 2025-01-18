@@ -7,7 +7,7 @@
 <ion-content>
   <ion-list>
     <!-- Radio Buttons for Units -->
-    <ion-radio-group>
+    <ion-radio-group [(ngModel)]="selectedUnit" (ionChange)="saveUnit()">
       <ion-item>
         <ion-label>Metric</ion-label>
         <ion-radio slot="start" value="metric"></ion-radio>
