@@ -14,13 +14,18 @@ export const routes: Routes = [
     path: 'weather',
     loadComponent: () => import('./weather/weather.page').then( m => m.WeatherPage)
   },
-  {
-  path: 'allCountries',
-  loadComponent: () => import('./allCountries/allCountries.page').then( m => m.MoviesPage)
-},
+  
   {
     path: 'settings',
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
+  },
+  {
+    path: 'news',
+    loadComponent: () => import('./news/news.page').then( m => m.NewsPage)
+  },
+  {
+    path: 'all-countriesfixed',
+    loadComponent: () => import('./all-countriesfixed/all-countriesfixed.page').then( m => m.allCountriesfixedPage)
   },
  
 

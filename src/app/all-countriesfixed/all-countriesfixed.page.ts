@@ -2,29 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { MyDataService } from '../services/my-data.service';
-import { MyHttpService } from '../services/my-http.service';
-import { HttpOptions } from '@capacitor/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import axios from 'axios';
-import { ActivatedRoute } from '@angular/router';
-import {IonThumbnail, IonLabel,IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem, IonButton} from '@ionic/angular/standalone';
-import { HttpClientModule } from '@angular/common/http';
-
-
+import { IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-movies',
-  templateUrl: './movies.page.html',
-  styleUrls: ['./movies.page.scss'],
+  selector: 'app-all-countriesfixed',
+  templateUrl: './all-countriesfixed.page.html',
+  styleUrls: ['./all-countriesfixed.page.scss'],
   standalone: true,
-  imports: [IonLabel,IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem]
+  imports: [IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
 })
-export class MoviesPage implements OnInit {
+export class allCountriesfixedPage implements OnInit {
+
   keyword: string = ''; // Search keyword
   countries: any[] = []; // Full list of countries
   filteredCountries: any[] = []; // Filtered countries based on the search
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,  private router: Router)  {}
 
   async ngOnInit() {
     // Get the keyword from the route's query parameters
@@ -44,11 +40,19 @@ export class MoviesPage implements OnInit {
       console.error('Error fetching countries:', error);
     }
   }
+ // Navigate to News Page
+ opennews() {
+  this.router.navigate(['/news']);
+}
 
+// Navigate to Weather Page
+openweather() {
+  this.router.navigate(['/weather']);
+}
   // Filter countries based on the search keyword
   filterCountries() {
     if (this.keyword.trim() === '') {
-      this.filteredCountries = []; // Clear the results if the search is empty
+      this.filteredCountries = this.countries; // Show all countries if no search
     } else {
       this.filteredCountries = this.countries.filter((country) =>
         country.name.common.toLowerCase().includes(this.keyword.toLowerCase())

@@ -28,7 +28,7 @@ export class HomePage {
 
   // Navigate to CountriesPage with the search keyword
   openCountries() {
-    this.router.navigate(['/movies'], { queryParams: { keyword: this.keyword } });
+    this.router.navigate(['/all-countriesfixed'], { queryParams: { keyword: this.keyword } });
   }
 
    // Navigate to settings page
