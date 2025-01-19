@@ -28,7 +28,7 @@
           }
         ],
         "@angular-eslint/directive-selector": [
-          "error",
+          "error" ,
           {
             "type": "attribute",
             "prefix": "app",
