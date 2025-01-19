@@ -7,12 +7,19 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="temperature !== null">
+  <div *ngIf="weatherData">
     <div style="text-align: center; margin-top: 20px;">
-      <h2>{{ weatherDescription }}</h2>
-      <p>{{ temperature }}°C</p>
+      <h2>{{ weatherData.weather[0].description }}</h2>
+      <img 
+        [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" 
+        alt="Weather Icon"
+        style="width: 100px; height: 100px;"
+      />
+      <p>{{ weatherData.main.temp }}°C</p>
     </div>
- 
+  </div>
+  <div *ngIf="!weatherData" style="text-align: center; margin-top: 20px;">
     <p>Unable to fetch weather data.</p>
   </div>
 </ion-content>
+

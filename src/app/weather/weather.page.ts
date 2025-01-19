@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { IonContent, IonHeader, IonTitle, IonToolbar,IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
-import axios from 'axios';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import axios from 'axios';
+import { IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.page.html',
-  standalone: true,
-  imports: [IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonList, IonItem],})
+  styleUrls: ['./weather.page.scss'],
+imports: [IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
+
+})
 export class WeatherPage implements OnInit {
-  capital: string = ''; // Capital name
-  weatherDescription: string = ''; // Weather description
-  temperature: number | null = null; // Temperature in Celsius
-  apiKey: string = 'your_openweather_api_key'; // Replace with your API key
+  capital: string = ''; // Capital city name
+  weatherData: any = null; // Weather data
+  apiKey = '0e613784e087bdc2a94f214d6cde889c'; // Your OpenWeatherMap API key
 
   constructor(private route: ActivatedRoute) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.route.queryParams.subscribe(async (params) => {
       const lat = params['lat'];
       const lon = params['lon'];
-      this.capital = params['capital'] || 'Unknown Location';
+      this.capital = params['capital'];
 
       if (lat && lon) {
         await this.fetchWeather(lat, lon);
@@ -34,10 +37,11 @@ export class WeatherPage implements OnInit {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`
       );
-      this.weatherDescription = response.data.weather[0].description;
-      this.temperature = response.data.main.temp;
+      this.weatherData = response.data;
     } catch (error) {
       console.error('Error fetching weather data:', error);
     }
   }
 }
+
+

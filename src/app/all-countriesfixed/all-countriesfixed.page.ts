@@ -49,8 +49,8 @@ export class allCountriesfixedPage implements OnInit {
   }
 
   // Navigate to Weather Page
-  openweather() {
-    this.router.navigate(['/weather'] );
+  openweather(lat: number, lon: number, capital: string) {
+    this.router.navigate(['/weather'], { queryParams: { lat: lat, lon: lon, capital: capital } });
   }
   // Filter countries based on the search keyword
   filterCountries() {
