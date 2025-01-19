@@ -50,9 +50,8 @@ export class allCountriesfixedPage implements OnInit {
 
   // Navigate to Weather Page
   openweather() {
-    this.router.navigate(['/weather']);
+    this.router.navigate(['/weather'] );
   }
-
   // Filter countries based on the search keyword
   filterCountries() {
     if (this.keyword.trim() === '') {
