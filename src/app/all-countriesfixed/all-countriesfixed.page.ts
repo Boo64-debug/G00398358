@@ -19,6 +19,8 @@ export class allCountriesfixedPage implements OnInit {
   keyword: string = ''; // Search keyword
   countries: any[] = []; // Full list of countries
   filteredCountries: any[] = []; // Filtered countries based on the search
+  isSearching: boolean = false; // Whether a search is in progress or not
+
 
   constructor(private route: ActivatedRoute,  private router: Router)  {}
 
@@ -40,23 +42,27 @@ export class allCountriesfixedPage implements OnInit {
       console.error('Error fetching countries:', error);
     }
   }
- // Navigate to News Page
- opennews() {
-  this.router.navigate(['/news']);
-}
 
-// Navigate to Weather Page
-openweather() {
-  this.router.navigate(['/weather']);
-}
+  // Navigate to News Page
+  openNews(cca2: string, countryName: string) {
+    this.router.navigate(['/news'], { queryParams: { country: cca2, name: countryName } });
+  }
+
+  // Navigate to Weather Page
+  openweather() {
+    this.router.navigate(['/weather']);
+  }
+
   // Filter countries based on the search keyword
   filterCountries() {
     if (this.keyword.trim() === '') {
-      this.filteredCountries = this.countries; // Show all countries if no search
+      this.filteredCountries = []; // Show no results initially
+      this.isSearching = false; // Mark that no search is happening
     } else {
       this.filteredCountries = this.countries.filter((country) =>
         country.name.common.toLowerCase().includes(this.keyword.toLowerCase())
       );
+      this.isSearching = true; // Mark that a search is happening
     }
   }
 }

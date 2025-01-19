@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>news</ion-title>
+    <ion-title>
+      News for {{ countryName }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">news</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Show message if no news is available -->
+  <div *ngIf="noNewsAvailable; else newsListTemplate">
+    <ion-text color="medium">
+      <h2 style="text-align: center; margin-top: 20px;">
+        No news available for {{ countryName }}.
+      </h2>
+    </ion-text>
+  </div>
+
+  <!-- Template to display the news list -->
+  <ng-template #newsListTemplate>
+    <ion-list>
+      <ion-card *ngFor="let news of newsList">
+        <img [src]="news.image_url" alt="News Image"
+        style="width: 30%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
+        />
+        <ion-card-header>
+          <ion-card-title>{{ news.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ news.description }}</p>
+          <ion-button fill="outline" color="primary" [href]="news.link" target="_blank">
+            Read More
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ng-template>
 </ion-content>

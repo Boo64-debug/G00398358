@@ -19,10 +19,8 @@ export const routes: Routes = [
     path: 'settings',
     loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
   },
-  {
-    path: 'news',
-    loadComponent: () => import('./news/news.page').then( m => m.NewsPage)
-  },
+  
+    { path: 'news', loadComponent: () => import('./news/news.page').then(m => m.NewsPage) },  
   {
     path: 'all-countriesfixed',
     loadComponent: () => import('./all-countriesfixed/all-countriesfixed.page').then( m => m.allCountriesfixedPage)
@@ -30,3 +28,4 @@ export const routes: Routes = [
  
 
 ];
+export class AppRoutingModule {}

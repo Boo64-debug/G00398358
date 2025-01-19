@@ -15,7 +15,7 @@
       <img
         [src]="country.flags?.png || country.flags?.svg"
         [alt]="country.name.common"
-        style="width: 10%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
+        style="width: 20%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
       />
 
       <!-- Display Country Name -->
@@ -26,7 +26,7 @@
       <!-- Buttons for News and Weather -->
       <div style="display: flex; justify-content: space-evenly; margin-top: 16px;">
         <ion-button color="primary"  expand="block" (click)="openweather()" >Weather</ion-button>
-        <ion-button color="secondary" expand="block"  (click)="opennews()" >News</ion-button>
+        <ion-button color="secondary" expand="block"  (click)="openNews(country.cca2, country.name.common)" >News</ion-button>
       </div>
     </ion-item>
   </ion-list>
