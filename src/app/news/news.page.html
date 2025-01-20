@@ -3,6 +3,11 @@
     <ion-title>
       News for {{ countryName }}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/settings" (click)="settings()" color="tertiary">
+        <ion-icon slot="icon-only" name="settings-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,15 +25,17 @@
   <ng-template #newsListTemplate>
     <ion-list>
       <ion-card *ngFor="let news of newsList">
-        <img [src]="news.image_url" alt="News Image"
-        style="width: 30%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
+        <img 
+          [src]="news.image_url" 
+          alt="News Image"
+          style="width: 30%; height: auto; margin-bottom: 8px;"
         />
         <ion-card-header>
           <ion-card-title>{{ news.title }}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <p>{{ news.description }}</p>
-          <ion-button fill="outline" color="primary" [href]="news.link" target="_blank">
+          <ion-button  color="primary" [href]="news.link" target="_blank">
             Read More
           </ion-button>
         </ion-card-content>

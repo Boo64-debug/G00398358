@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ keyword ? keyword : 'Countries Page' }} </ion-title>
-    
+    <ion-title>{{ keyword ? keyword : 'Countries Page' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/settings" (click)="settings()" color="tertiary">
+        <ion-icon slot="icon-only" ios="settings-sharp" md="settings-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-   
-
 </ion-header>
 
 <ion-content>
@@ -15,7 +17,7 @@
       <img
         [src]="country.flags?.png || country.flags?.svg"
         [alt]="country.name.common"
-        style="width: 20%; height: space-evenly; margin-bottom: 8px; margin-bottom: 8px;"
+        style="width: 20%; margin-bottom: 8px;"
       />
 
       <!-- Display Country Name -->
@@ -25,8 +27,18 @@
 
       <!-- Buttons for News and Weather -->
       <div style="display: flex; justify-content: space-evenly; margin-top: 16px;">
-        <ion-button color="primary"  expand="block" (click)="openweather(country.latlng[0], country.latlng[1], country.capital[0])" >Weather</ion-button>
-        <ion-button color="secondary" expand="block"  (click)="openNews(country.cca2, country.name.common)" >News</ion-button>
+        <ion-button 
+          color="primary" 
+          expand="block" 
+          (click)="openweather(country.latlng[0], country.latlng[1], country.capital[0])">
+          Weather
+        </ion-button>
+        <ion-button 
+          color="secondary" 
+          expand="block" 
+          (click)="openNews(country.cca2, country.name.common)">
+          News
+        </ion-button>
       </div>
     </ion-item>
   </ion-list>

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonIcon,    IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import axios from 'axios';
-import { IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
+import { IonButtons, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-all-countriesfixed',
   templateUrl: './all-countriesfixed.page.html',
   styleUrls: ['./all-countriesfixed.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
+  imports: [ IonButtons,IonIcon, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
 })
 export class allCountriesfixedPage implements OnInit {
 
@@ -41,6 +41,11 @@ export class allCountriesfixedPage implements OnInit {
     } catch (error) {
       console.error('Error fetching countries:', error);
     }
+
+  }
+
+  settings() {
+    this.router.navigate(['/settings']);
   }
 
   // Navigate to News Page

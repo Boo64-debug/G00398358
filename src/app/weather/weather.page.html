@@ -1,25 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Weather for {{ capital }}
-    </ion-title>
+    <!-- Title dynamically updates with the capital -->
+    <ion-title>Weather for {{ capital }}</ion-title>
+
+    <!-- Settings button aligned to the right -->
+    <ion-button slot="end" routerLink="/settings" (click)="settings()" color="tertiary">
+      <ion-icon slot="icon-only" ios="settings-sharp" md="settings-sharp"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Weather data available -->
   <div *ngIf="weatherData">
     <div style="text-align: center; margin-top: 20px;">
+      <!-- Weather Description -->
       <h2>{{ weatherData.weather[0].description }}</h2>
-      <img 
-        [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" 
+
+      <!-- Weather Icon -->
+      <img
+        [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'"
         alt="Weather Icon"
         style="width: 100px; height: 100px;"
       />
-      <p>{{ weatherData.main.temp }}°C</p>
+
+      <!-- Temperature -->
+      <p>
+        {{ weatherData.main.temp }}
+        <span *ngIf="selectedUnit === 'metric'">°C</span>
+        <span *ngIf="selectedUnit === 'imperial'">°F</span>
+        <span *ngIf="selectedUnit === 'standard'">K</span>
+      </p>
     </div>
   </div>
-  <div *ngIf="!weatherData" style="text-align: center; margin-top: 20px;">
-    <p>Unable to fetch weather data.</p>
-  </div>
-</ion-content>
-

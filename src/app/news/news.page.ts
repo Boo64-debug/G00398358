@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {IonContent,IonHeader,IonTitle,IonToolbar, IonCard,IonCardContent,IonCardHeader,IonCardSubtitle, IonCardTitle, IonList,IonButton,IonText} from '@ionic/angular/standalone';
+import {IonButtons,IonIcon, IonContent,IonHeader,IonTitle,IonToolbar, IonCard,IonCardContent,IonCardHeader,IonCardSubtitle, IonCardTitle, IonList,IonButton,IonText} from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 import axios from 'axios';
 
 @Component({
@@ -10,7 +12,7 @@ import axios from 'axios';
   templateUrl: './news.page.html',
   styleUrls: ['./news.page.scss'],
   standalone: true,
-  imports: [ CommonModule, FormsModule,IonContent,IonHeader,IonTitle,IonToolbar,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonList,IonButton,IonText
+  imports: [ IonButtons, IonIcon, CommonModule, FormsModule,IonContent,IonHeader,IonTitle,IonToolbar,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonList,IonButton,IonText
   ],
 })
 export class NewsPage implements OnInit {
@@ -19,7 +21,7 @@ export class NewsPage implements OnInit {
   newsList: any[] = []; // List of news stories
   noNewsAvailable: boolean = false; // Flag for no news condition
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   async ngOnInit() {
     this.route.queryParams.subscribe(async (params) => {
@@ -29,12 +31,16 @@ export class NewsPage implements OnInit {
       this.countryCode = countryParam || ''; // Extract the CCA2 code
       this.countryName = countryNameParam || ''; // Extract the country name
 
+
+
       if (this.countryCode) {
         await this.fetchNews();
       } else {
         this.noNewsAvailable = true;
       }
     });
+  } settings() {
+    this.router.navigate(['/settings']);
   }
 
   // Fetch news data for the given country CCA2 code
@@ -65,5 +71,7 @@ export class NewsPage implements OnInit {
       this.newsList = [];
       this.noNewsAvailable = true;
     }
+    
   }
+  
 }
