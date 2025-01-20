@@ -4,6 +4,6 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'G00398358',
   webDir: 'www'
-};
+ };
 
 export default config;
