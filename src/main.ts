@@ -14,5 +14,5 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     importProvidersFrom(IonicStorageModule.forRoot())
-  ],
+   ],
 });
