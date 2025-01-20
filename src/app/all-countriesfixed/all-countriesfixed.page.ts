@@ -5,14 +5,14 @@ import { IonIcon,    IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/
 import { ActivatedRoute, Router } from '@angular/router';
 
 import axios from 'axios';
-import { IonButtons, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem } from '@ionic/angular/standalone';
+import { IonButtons, IonLabel, IonButton, IonList, IonItem } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-all-countriesfixed',
   templateUrl: './all-countriesfixed.page.html',
   styleUrls: ['./all-countriesfixed.page.scss'],
   standalone: true,
-  imports: [ IonButtons,IonIcon, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
+  imports: [  IonButtons,IonIcon, IonLabel, IonButton , IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem],
 })
 export class allCountriesfixedPage implements OnInit {
 

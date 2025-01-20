@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import {IonButtons, IonIcon, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonList, IonItem,IonContent,IonHeader,IonTitle,IonToolbar,} from '@ionic/angular/standalone';
+import { IonIcon, IonButton  ,IonContent,IonHeader,IonTitle,IonToolbar,} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.page.html',
   styleUrls: ['./weather.page.scss'],
-  imports: [  IonButtons,IonIcon,IonLabel,IonButton,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonList,IonItem,IonContent,IonHeader,IonTitle,IonToolbar,CommonModule,FormsModule]
+  imports: [  IonIcon,IonButton,IonContent,IonHeader,IonTitle,IonToolbar,CommonModule,FormsModule]
 })
 export class WeatherPage implements OnInit {
 
