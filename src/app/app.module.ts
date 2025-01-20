@@ -19,7 +19,7 @@ AppRoutingModule,    // Handles app routing
   ],
   providers: [{ provide: RouteReuseStrategy,useClass: IonicRouteStrategy, // Optimized route strategy for Ionic
     },
-  ],
+   ],
   bootstrap: [AppComponent], // Entry point for the application
 })
 export class AppModule {}
